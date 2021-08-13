@@ -1,0 +1,42 @@
+DROP TABLE IF EXISTS Users;
+DROP TABLE IF EXISTS Persons;
+DROP TABLE IF EXISTS Events;
+DROP TABLE IF EXISTS Authorization;
+
+CREATE TABLE Users (
+  Username varchar(255) not null PRIMARY KEY,
+  Password varchar(255) not null,
+  Email varchar(255) not null,
+  FirstName varchar(255) not null,
+  LastName varchar(255) not null,
+  Gender char(1) not null,
+  PersonID varchar(255) not null
+);
+
+CREATE TABLE Persons (
+  PersonID varchar(255) not null PRIMARY KEY,
+  AssociatedUsername varchar(255) not null,
+  FirstName varchar(255) not null,
+  LastName varchar(255) not null,
+  Gender char(1) not null,
+  FatherID varchar(255),
+  MotherID varchar(255),
+  SpouseID varchar(255)
+);
+
+CREATE TABLE Events (
+  EventID varchar(255) not null PRIMARY KEY,
+  AssociatedUsername varchar(255) not null,
+  PersonID varchar(255) not null,
+  Latitude float not null,
+  Longitude float not null,
+  Country varchar(255) not null,
+  City varchar(255) not null,
+  EventType varchar(255) not null,
+  Year integer not null
+);
+
+CREATE TABLE Authorization (
+  Username varchar(255) not null,
+  AuthorizationToken varchar(255) not null PRIMARY KEY
+);
